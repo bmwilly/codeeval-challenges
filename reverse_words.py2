@@ -1,0 +1,19 @@
+'''Reverse Words challenge https://www.codeeval.com/open_challenges/8/'''
+
+import argparse
+
+
+def reverse_words(s):
+    words = s.split(' ')
+    return ' '.join(list(reversed(words)))
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('input', help='Input file path')
+    args = parser.parse_args()
+
+    with open(args.input, 'rb') as f:
+        for line in f:
+            if line != '\n':
+                print reverse_words(line.strip('\n'))
