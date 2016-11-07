@@ -1,0 +1,29 @@
+'''Sum of Primes challenge https://www.codeeval.com/open_challenges/4/'''
+
+
+def is_prime(n):
+    if n == 1:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    for i in range(3, n):
+        if n % i == 0:
+            return False
+    return True
+
+
+def sum_of_primes():
+    n = 2
+    sum_n = n_primes = 0
+    while n_primes < 1000:
+        if is_prime(n):
+            sum_n += n
+            n_primes += 1
+        n += 1
+    return sum_n
+
+
+if __name__ == '__main__':
+    print sum_of_primes()
