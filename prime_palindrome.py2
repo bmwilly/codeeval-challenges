@@ -1,0 +1,25 @@
+'''Prime Palindrome challenge https://www.codeeval.com/open_challenges/3/'''
+
+
+def is_prime(n):
+    if n == 2:
+        return True
+    for i in range(3, n):
+        if n % i == 0:
+            return False
+    return True
+
+
+def is_palindrome(n):
+    return True if str(n) == str(n)[::-1] else False
+
+
+def prime_palindrome():
+    '''Finds the largest prime palindrome <= 1000'''
+    for n in reversed(range(1001)):
+        if is_prime(n) and is_palindrome(n):
+            return n
+
+
+if __name__ == '__main__':
+    print prime_palindrome()
