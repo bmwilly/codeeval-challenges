@@ -1,0 +1,22 @@
+'''First non-repeated character challenge
+https://www.codeeval.com/open_challenges/12/'''
+
+import argparse
+from collections import Counter
+
+
+def nonrepeated_char(s):
+    unique_chars = [k for k, v in Counter(s).iteritems() if v == 1]
+    for x in list(s):
+        if x in unique_chars:
+            return x
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('input', help='Input file path')
+    args = parser.parse_args()
+
+    with open(args.input, 'rb') as f:
+        for line in f:
+            print nonrepeated_char(line)
