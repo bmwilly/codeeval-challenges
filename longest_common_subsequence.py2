@@ -1,0 +1,21 @@
+'''Longest Common Subsequence challenge
+https://www.codeeval.com/open_challenges/6/'''
+
+import argparse
+
+
+def longest_common_subsequence(s):
+    strings = s.split(';')
+    common = set(strings[0]).intersection(set(strings[1]))
+    return str(common)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('input', help='Input file path')
+    args = parser.parse_args()
+
+    with open(args.input, 'rb') as f:
+        for line in f:
+            if line != '\n':
+                print longest_common_subsequence(line.strip('\n'))
