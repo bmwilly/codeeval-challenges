@@ -1,0 +1,14 @@
+'''Longest Lines challenge https://www.codeeval.com/open_challenges/2/'''
+
+import argparse
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('input', help='Input file path')
+    args = parser.parse_args()
+
+    lines = open(args.input).readlines()
+    d = {x: len(x) for x in lines[1:]}
+    d_sorted = sorted(d, key=d.get, reverse=True)[:int(lines[0])]
+    print ''.join(d_sorted).strip('\n')
