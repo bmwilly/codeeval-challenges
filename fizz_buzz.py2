@@ -1,0 +1,39 @@
+'''FizzBuzz program defined in https://www.codeeval.com/open_challenges/1/'''
+
+import argparse
+
+
+def fizzbuzz(x, y, n):
+    assert (x >= 1 and x <= 20), 'x is {} but needs to be in [1, 20]'.format(x)
+    assert (y >= 1 and x <= 20), 'y is {} but needs to be in [1, 20]'.format(y)
+    assert (n >= 21 and n <= 100), \
+        'n is {} but needs to be in [21, 100]'.format(n)
+
+    s = ''
+    for i in range(1, n + 1):
+        if i % x == 0 and i % y == 0:
+            s += 'FB '
+        elif i % x == 0:
+            s += 'F '
+        elif i % y == 0:
+            s += 'B '
+        else:
+            s += '{} '.format(i)
+    return s.strip(' ')
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('input', help='Input file path')
+    args = parser.parse_args()
+
+    with open(args.input, 'rb') as f:
+        for line in f:
+            try:
+                nums = [int(x) for x in line.split()]
+            except:
+                raise Exception('Could not parse the line: {}'.format(line))
+            assert len(nums) == 3, \
+                '{} does not have three elements'.format(line)
+            s = fizzbuzz(*nums)
+            print s
